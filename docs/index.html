@@ -1,0 +1,240 @@
+<!-- (c) Koshik Kumar -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InQuote - API</title>
+    <link rel="icon" href="https://img.icons8.com/ios/100/quote--v1.png">
+    <meta name="author" content="Koshik Kumar">
+    <style>
+      body {
+      font-size: 15px;
+      color: #404040;
+      background-image: linear-gradient(to bottom right, #5ccaf2 0% 50%, #e860ff 95% 100%);
+      background-position: center;
+      background-attachment: fixed;
+      margin: 0;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+      display: grid;
+      place-items: center;
+      box-sizing: border-box;
+      }
+      .card {
+      background-color: #fff;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 0px 10px 0px 10px;
+      border: 3px solid #ed5807;
+      border-radius: 1.5rem;
+      box-shadow: 0px 1rem 1.5rem rgba(0, 0, 0, 0.5);
+      }
+      .card2 {
+      display: box;
+      border-left: 3px solid black;
+      border-bottom: 3px solid black;
+      border-radius: 10px;
+      padding: 0px 0px 0px 0px;
+      box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+      }
+      .actions {
+      padding: 0 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      order: 99;
+      }
+      button {
+      color: inherit;
+      font: inherit;
+      font-weight: bold;
+      background-color: #00bbff;
+      width: 100%;
+      border: none;
+      padding: 1rem 1rem 1rem 1rem;
+      outline: none;
+      box-sizing: border-box;
+      border-radius: 1.5rem/50%;
+      transition: background-color 100ms ease-in-out, transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      }
+      button:hover {
+      background-color: #00a3d9;
+      transform: scale(1.0); /* x = multiply by x, 1.0 is normal */
+      }
+      button:active {
+      background-color: #0079a9;
+      transform: scale(1.08);
+      }
+      .des {
+      text-align: center;
+      padding: 0 2rem 1.5rem;
+      order: 100;
+      }
+      a:link {
+      text-decoration: none;
+      color: #404040;
+      }
+      a:active {
+      color: #404040;
+      }
+      .para {
+      text-align: left;
+      }
+      .infoh2 {
+      text-align: center; 
+      padding: 0 0rem 0rem;
+      }
+      .love {
+      display: inline-block;
+      position: relative;
+      top: .1em;
+      font-size: 1.0em;
+      -webkit-transform: scale(.9);
+      -moz-transform: scale(.9);
+      transform: scale(.9);
+      -webkit-animation: love .5s infinite linear alternate-reverse;
+      -moz-animation: love .5s infinite linear alternate-reverse;
+      animation: love .5s infinite linear alternate-reverse;
+      color: red;
+      }
+      @-webkit-keyframes love {
+      to {
+      -webkit-transform: scale(1.5);
+      }
+      }
+      @-moz-keyframes love {
+      to {
+      -moz-transform: scale(1.5);
+      }
+      }
+      @keyframes love {
+      to {
+      transform: scale(1.5);
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 class="infoh2"><u>InQuote - API</u></h1>
+      <div class="card2"style="background-color: rgb(210, 255, 200);">
+        <h3 style="padding: 0px 0px 0px 5px;">• <u>Description</u></h3>
+        <p class="para" style="padding: 0px 5px 0px 5px">InQuote is a powerful API that provides access to a vast collection 
+          of unique quotes with support for filtering by different categories which can be retrived using <b>HTTP</b> request so that you can easily find the perfect quote for your needs.<br/>
+          It has a vast collection of <b>35000+</b> unique quotes of different categories. It is hosted on vercel.
+        </p>
+        <div class="actions"><a href="/" target="_blank"><button style="border: 1px solid #000;">Demo Website is Live: Click Here</button></a></div>
+      </div>
+      <p></p>
+      
+      <div class="card2" style="background-color: rgb(230, 200, 240);padding: 8px 0px 8px 0px">
+        <font style="font-size: 16px;font-weight: bold;padding: 5px 0px 0px 4px;">• <u>BASE URL</u>:</font> <font style="font-weight: bold;padding: 0px 2px 0px 0px">
+        https://inquote.vercel.app
+        </font>
+        <button id="copy" onclick="copyLink()" 
+          style="width: 30px;height: 30px;border: 1px solid #000;border-radius: 7px;background-color: rgb(250, 120, 250);padding: 0rem 0rem 0rem 0rem;">
+        📋
+        </button>
+      </div>
+      <p></p>
+      
+      <div class="card2"style="background-color: rgb(200, 245, 250);">
+        <h3 style="padding: 0px 0px 0px 5px;">• <u>Endpoints</u></h3>
+        <p class="para" style="padding: 0px 5px 0px 5px"> It has following endpoints :
+        <ul>
+          <li><code><b>/api/random</b></code></li>
+          <i>Generates a random quote.</i>
+          <br/><br/>
+          <li><code><b>/api/random/{category}</b></code></li>
+          <i>Generates a quote of specific category.</i>
+          <br/><br/>
+          <li><code><b>/api/category</b></code></li>
+          <i>Lists all categories</i>
+        </ul>
+        </p>
+      </div>
+      <p></p>
+      
+      <div class="card2" style="background-color: rgb(235, 180, 100);">
+        <h3 style="padding: 0px 0px 0px 5px;">• <u>List of all Categories</u></h3>
+        <p style="padding: 0px 5px 0px 5px;"><code><b>anime, death, happiness, inspiration, love, poetry,
+          romance, science, success, time, truth</b>
+          </code>
+        </p>
+      </div>
+      <p></p>
+      
+      <div class="card2" style="background-color: rgb(220, 240, 150);">
+        <h3 style="padding: 0px 0px 0px 5px;">• <u>Response Example for Random category</u></h3>
+        <p><code style="padding: 0px 5px 0px 5px;">GET <b><u>/api/random</u></b></code>
+          <a href="https://inquote.vercel.app/api/random" target="_blank">
+          <button style="width: 52px;height: 25px;border: 1px solid #ff0000;border-radius: 7px;background-color: rgb(200, 150, 150);padding: 0rem 0rem 0rem 0rem;">Try it</button>
+          </a>
+        </p>
+        <p style="padding: 0px 5px 0px 5px;"><code><b>{</b><br/>"<b>id</b>": 123,<br/>"<b>quote</b>": "A friend to all is a friend to none.",<br/>
+          "<b>author</b>": "Aristotle",<br/>"<b>length</b>": 36,<br>"<b>tags</b>": ["friendship", "knowledge"]</br/><b>}</b></code>
+        </p>
+      </div>
+      <p></p>
+      
+      <div class="card2" style="background-color: rgb(150, 240, 220);">
+        <h3 style="padding: 0px 0px 0px 5px;">• <u>Response Example for Anime category</u></h3>
+        <p><code style="padding: 0px 5px 0px 5px;">GET <b><u>/api/random/anime</u></b></code>
+          <a href="https://inquote.vercel.app/api/random/anime" target="_blank">
+          <button style="width: 52px;height: 25px;border: 1px solid #0000ff;border-radius: 7px;background-color: rgb(248, 112, 105);padding: 0rem 0rem 0rem 0rem;">Try it</button>
+          </a>
+        </p>
+        <p style="padding: 0px 5px 0px 5px;"><code><b>{</b><br/>"<b>anime</b>": "Naruto",<br/>"<b>character</b>": "Pain",<br/>"<b>quote</b>": "Because of the existence of love - 
+          sacrifice is born. As well as hate. Then one comprehends... one knows PAIN."<br/><b>}</b></code>
+        </p>
+      </div>
+      <p></p>
+      
+      <div class="card2" style="background-color: rgb(255, 180, 180);">
+        <h3 style="padding: 0px 0px 0px 5px;">• <u>Response Example for Other Categories</u></h3>
+        <p>
+          <code style="padding: 0px 5px 0px 5px;">GET <b><u>/api/random/</u>{category}</b></code>
+          <a href="https://inquote.vercel.app/api/random/{category}" target="_blank">
+            <button style="width: 52px;height: 25px;border: 1px solid #000000;border-radius: 7px;background-color: rgb(150, 250, 150);padding: 0rem 0rem 0rem 0rem;">Try it</button>
+        <p style="padding: 0px 5px 0px 0px;"><i>❗Replace {category} with an appropriate category.</i></p>
+        </a>
+        </p>
+        <p style="padding: 0px 5px 0px 5px;"><code><b>{</b><br/>"<b>Column1</b>": 6,<br/>"<b>Quote</b>": "“Somewhere, something incredible is waiting to be known.”",<br/>
+          "<b>Author</b>": "― Carl Sagan",<br/>"<b>Main Tag</b>": "science",<br/>"<b>Other Tags</b>": "[' astronomer, science, writer']"<br/><b>}</b></code>
+        </p>
+      </div>
+      <p></p>
+      
+      <div class="card2" style="background-color: rgb(155, 180, 100);">
+        <h3 style="padding: 0px 0px 0px 5px;">• <u>Points to Ponder</u></h3>
+        <p style="padding: 0px 5px 0px 5px;"><b><u>For quotes and author:</u><br><br> ⟩ Random endpoint has '<code>quote</code>' and '<code>author</code>'<br><br>
+          ⟩ Anime endpoint has '<code>quote</code>' and 'character'<br><br> ⟩ For any other type of category, the endpoint had '<code>Quote</code>' and '<code>Author</code>'.<br><br>
+          So, Please consider seeing examples once before using this API in any of your projects.</b>
+        </p>
+      </div>
+      <p></p>
+      
+      <div style="padding: 0px 10px 20px 30px;display: box">
+        <a style="padding-right: 10px;" href="https://github.com/KoshikKumar17/InQuote" target="_blank"><button style="border: 1px solid #000;width: 45%;">GitHub</button></a>
+        <a href="https://t.me/InQuoteAPI" target="_blank"><button style="border: 1px solid #000;width: 45%;">Telegram</button></a>
+      </div>
+      <div class="des link">
+        <b> Made with <span class="love">❤️</span> by Koshik</b>
+        <hr style="border: 2px solid rgb(255, 100, 150);width: 100%;border-radius: 2px;">
+      </div>
+    </div>
+  </body>
+  <script>
+    var btn = document.getElementById("copy");
+    function copyLink() {
+      var link = "https://inquote.vercel.app";
+      navigator.clipboard.writeText(link);
+      btn.innerHTML = "✅"
+    }
+  </script>
+  </html>
+                                               
