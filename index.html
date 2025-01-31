@@ -1,0 +1,250 @@
+<!-- (c) Koshik Kumar -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InQuote - Quotes</title>
+    <link rel="icon" href="https://img.icons8.com/ios/100/quote--v1.png">
+    <meta name="author" content="Koshik Kumar">
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+      body {
+      font-size: 15px;
+      color: #404040;
+      font-family: Montserrat, sans-serif;
+      background-image: linear-gradient(to bottom right, #5ccaf2 0% 50%, #e860ff 95% 100%);
+      background-position: center;
+      background-attachment: fixed;
+      margin: 0;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+      display: grid;
+      place-items: center;
+      box-sizing: border-box;
+      }
+      .card {
+      background-color: #fff;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 3px solid #ed5807;
+      border-radius: 1.5rem;
+      box-shadow: 0px 1rem 1.5rem rgba(0, 0, 0, 0.5);
+      }
+      .actions {
+      padding: 0 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      order: 99;
+      }
+      button {
+      color: inherit;
+      font: inherit;
+      font-weight: bold;
+      background-color: #00bbff;
+      width: 100%;
+      border: none;
+      padding: 1rem 1rem 1rem 1rem;
+      outline: none;
+      box-sizing: border-box;
+      border-radius: 1.5rem/50%;
+      transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      }
+      button:hover {
+      background-color: #009fd6;
+      transform: scale(1.0); /* x = multiply by x, 1.0 is normal */
+      }
+      button:active {
+      background-color: #0075a5;
+      transform: scale(1.1);
+      }
+      select {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      width: 80%;
+      font: inherit;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #58b1d1;
+      box-sizing: border-box;
+      border-radius: 1.5rem;
+      border: 2px solid #0abcfc;
+      outline: none;
+      text-align: center;
+      text-align-last: center;
+      /*font-size: 1rem; Adjust text size */
+      /*color: #333; Optional: Change text color for readability */
+      cursor: pointer; 
+      }
+      select:active {
+      transform: scale(1.1);
+      }
+      select:hover {
+      background-color: #58b1c1;
+      transform: scale(1.0);
+      border-color: #00bbff;
+      }
+      select:focus {
+      box-shadow: 0 0 5px rgba(255, 208, 26, 0.8); /* Glow effect on focus */
+      }
+      .desc {
+      text-align: center;
+      padding: 0 2rem 1.5rem;
+      order: 100;
+      }
+      a:link {
+      text-decoration: none;
+      color: #404040;
+      }
+      a:active {
+      color: #404040; /* When link os active */
+      }
+      .para {
+      text-align: center;
+      }
+      .infoh2 {
+      text-align: center; 
+      padding: 0 1rem 0rem;
+      }
+      .love {
+      display: inline-block;
+      position: relative;
+      top: .1em;
+      font-size: 1.0em;
+      -webkit-transform: scale(.9);
+      -moz-transform: scale(.9);
+      transform: scale(.9);
+      -webkit-animation: love .5s infinite linear alternate-reverse;
+      -moz-animation: love .5s infinite linear alternate-reverse;
+      animation: love .5s infinite linear alternate-reverse;
+      color: red;
+      }
+      @-webkit-keyframes love {
+      to {
+      -webkit-transform: scale(1.5);
+      }
+      }
+      @-moz-keyframes love {
+      to {
+      -moz-transform: scale(1.5);
+      }
+      }
+      @keyframes love {
+      to {
+      transform: scale(1.5);
+      }
+      }
+      .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      margin-bottom: 1rem;
+      }
+      .loader div {
+      width: 16px;
+      height: 16px;
+      background-color: #0abcfc;
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+      margin: 0 4px;
+      }
+      .loader div:nth-child(2) {
+      animation-delay: 0.2s;
+      }
+      .loader div:nth-child(3) {
+      animation-delay: 0.4s;
+      }
+      @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2 class="infoh2"><u>InQuote - Quotes</u></h2>
+      <p class="para">Just click on <b>Get Quote</b> to generate a quote of random category or <b>choose a category</b> to receive a quote of specific category.</p>
+      <hr style="border: 2px solid #00bbff; width: 97%;border-radius: 2px;"><br><br>
+      <div class="loader" id="loader" style="display: none;">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div id="quoteDisplay" class="para" style="padding: 0px 4px 0px 4px;"></div>
+      <select id="categorySelect">
+        <option value="">Random</option>
+        <option value="anime">Anime</option>
+        <option value="death">Death</option>
+        <option value="happiness">Happiness</option>
+        <option value="inspiration">Inspiration</option>
+        <option value="love">Love</option>
+        <option value="poetry">Poetry</option>
+        <option value="romance">Romance</option>
+        <option value="science">Science</option>
+        <option value="success">Success</option>
+        <option value="time">Time</option>
+        <option value="truth">Truth</option>
+      </select>
+      <div class="actions">
+        <button id="quoteButton">Get Quote</button>
+        <br>
+        <a href="/docs" target="_blank"> <button>API Documentation</button> </a>
+        <br>
+      </div>
+      <div class="desc link">
+        Made with <span class="love">❤️</span> by Koshik
+        <hr style="border: 2px solid rgb(255, 100, 150);width: 100%;border-radius: 2px;">
+      </div>
+    </div>
+    <script>
+      document.getElementById('quoteButton').addEventListener('click', getQuote);
+      function getQuote() {
+      const category = document.getElementById('categorySelect').value;
+      const loader = document.getElementById('loader');
+      const quoteDisplay = document.getElementById('quoteDisplay');
+      
+      // Show the loader
+      loader.style.display = 'flex';
+      quoteDisplay.textContent = ''; // Clear the previous quote
+      
+      let apiUrl = 'https://inquote.vercel.app/api/random';
+      if (category) {
+      apiUrl = `https://inquote.vercel.app/api/random/${category}`;
+      }
+      
+      fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+      loader.style.display = 'none'; // Hide the loader
+      
+      // Determine the response format
+      if (data) {
+          if (category === 'anime') {
+              // For anime category
+              quoteDisplay.innerHTML = `<strong><i>${data.quote}</i></strong> <br/><br/> <u>${data.character || 'Unknown'}</u><br/><br/><br/>`;
+          } else if (category) {
+              // For other specific categories
+              quoteDisplay.innerHTML = `<strong><i>${data.Quote}</i></strong> <br/><br/> <u>${data.Author || 'Unknown'}</u><br/><br/><br/>`;
+          } else {
+              // For random category
+              quoteDisplay.innerHTML = `<strong><i>${data.quote}</i></strong> <br/><br/> <u>${data.author || 'Unknown'}</u><br/><br/><br/>`;
+          }
+      } else {
+          quoteDisplay.textContent = 'Sorry, could not fetch a quote at the moment.';
+      }
+      })
+      .catch(error => {
+      loader.style.display = 'none'; // Hide the loader
+      quoteDisplay.textContent = 'An error occurred while fetching the quote.';
+      console.error(error);
+      });
+      }
+    </script>
+  </body>
+</html>
